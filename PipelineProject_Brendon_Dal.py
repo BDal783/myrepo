@@ -82,7 +82,7 @@ def count_contigs(fasta_file, length_threshold=1000):
 contigs = (count_contigs("HCMV_combined_assembly/K99/final_contigs.fasta"))
 print(contigs)
 print(bp)
-
+#writing to log file
 with open('PipelineProject.log', 'a') as f:
     f.write("There are " + str(contigs) + " contigs > 1000bp in the assmbly.")
     f.write("\n")
@@ -130,6 +130,7 @@ os.system(blast_command)
 with open('myresults.tsv', 'r') as f:
     lines = f.readlines()
     f.close()
+#writing to log file
 with open('PipelineProject.log', 'a') as file:
     for i in lines:
         file.write(i)
