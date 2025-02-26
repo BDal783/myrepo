@@ -1,16 +1,16 @@
 #Brendon Dal Comp 383
 import os
 from Bio import SeqIO
-'''
+
 #second problem:
 #downloading comparison genome
 first_dataset = 'datasets download genome accession GCF_000845245.1 --include gff3,rna,cds,protein,genome,seq-report'
 #running command through terminal
 os.system(first_dataset)
 #unzipping the downloaded file
-'''
+
 unzip= 'unzip ncbi_dataset.zip'
-'''
+
 #running it through the terminal
 os.system(unzip)
 #aligning the refrence genome
@@ -24,11 +24,11 @@ second_length = 'wc -l SRR5660033_1.fastq'
 os.system(first_length)
 os.system(second_length)
 #aligning donor 1
-first_alignment = 'bowtie2 --quiet -x HCMV -1 SRR5660030_1.fastq -2 SRR5660030_2.fastq -S mapped_2dpi.sam'
+first_alignment = 'bowtie2 --quiet -x HCMV -1 topSRR5660030_1.fastq -2 topSRR5660030_2.fastq -S mapped_2dpi.sam'
 #running it through the terminal
 os.system(first_alignment)
 #aligning donor 2
-second_alignment = 'bowtie2 --quiet -x HCMV -1 SRR5660033_1.fastq -2 SRR5660033_2.fastq -S mapped_6dpi.sam'
+second_alignment = 'bowtie2 --quiet -x HCMV -1 topSRR5660033_1.fastq -2 topSRR5660033_2.fastq -S mapped_6dpi.sam'
 os.system(second_alignment)
 #mapping the alligned donor 1
 mapped_2dpi = 'samtools view -c -F 4 mapped_2dpi.sam'
@@ -38,9 +38,9 @@ os.system(mapped_2dpi)
 mapped_6dpi = 'samtools view -c -F 4 mapped_6dpi.sam'
 os.system(mapped_6dpi)
 #printing out results to the log
-echo_1 = 'echo "Donor 1 (2dpi) had $(expr $(wc -l < SRR5660030_1.fastq) / 4) read pairs before Bowtie2 filtering and $(samtools view -c -F 4 mapped_2dpi.sam) read pairs after." >> PipelineProject.log'
+echo_1 = 'echo "Donor 1 (2dpi) had $(expr $(wc -l < topSRR5660030_1.fastq) / 4) read pairs before Bowtie2 filtering and $(samtools view -c -F 4 mapped_2dpi.sam) read pairs after." >> PipelineProject.log'
 os.system(echo_1)
-echo_2 = 'echo "Donor 1 (6dpi) had $(expr $(wc -l < SRR5660033_1.fastq) / 4) read pairs before Bowtie2 filtering and $(samtools view -c -F 4 mapped_6dpi.sam) read pairs after." >> PipelineProject.log'
+echo_2 = 'echo "Donor 1 (6dpi) had $(expr $(wc -l < topSRR5660033_1.fastq) / 4) read pairs before Bowtie2 filtering and $(samtools view -c -F 4 mapped_6dpi.sam) read pairs after." >> PipelineProject.log'
 os.system(echo_2)
 
 #third problem:
@@ -60,11 +60,10 @@ os.system(into_bam2)
 combined = 'spades.py -k 99 -t 1 --isolate -1 mapped_2dpi.1.fastq -2 mapped_2dpi.2.fastq -1 mapped_6dpi.1.fastq -2 mapped_6dpi.2.fastq -o HCMV_combined_assembly'
 os.system(combined)
 #printing out results to the log
-echo3 = 'echo "Size of contigs.fasta: $(du -h HCMV_combined_assembly/contigs.fasta | cut -f1)" >> PipelineProject.log'
+echo3 = 'echo "spades.py -k 99 -t 1 --isolate -1 mapped_2dpi.1.fastq -2 mapped_2dpi.2.fastq -1 mapped_6dpi.1.fastq -2 mapped_6dpi.2.fastq -o HCMV_combined_assembly" >> PipelineProject.log'
 os.system(echo3)
 
 #fourth proplem:
-#downloading libraries
 #function to count contigs
 bp = 0
 def count_contigs(fasta_file, length_threshold=1000):
@@ -90,7 +89,7 @@ with open('PipelineProject.log', 'a') as f:
     f.write("There are " + str(bp) + " bp in the assembly.")
     f.write("\n")
     f.close()
-'''
+
 #fifth problem:
 # function to find longest contig
 def longest_contig(fasta_file):
