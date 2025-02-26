@@ -7,4 +7,8 @@ COMP 383 COMP BIO PYTHON PIPELINE PROJECT
 		- https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR5660033&display=data-access
 		- https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR5660030&display=data-access 
 - After downloading both of these donor sequences we performed a fasterq-dump of both donors to be turned into FASTQ format for future comparison use in the python script
-
+- 
+3. Dependencies
+- The required dependencies are os, SeqIO, Spades, Bowtie2, datasets, and BLAST+.
+4. Running the Python Wrapper
+-  
