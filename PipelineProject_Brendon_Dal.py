@@ -8,7 +8,9 @@ first_dataset = 'datasets download genome accession GCF_000845245.1 --include gf
 #running command through terminal
 os.system(first_dataset)
 #unzipping the downloaded file
+'''
 unzip= 'unzip ncbi_dataset.zip'
+'''
 #running it through the terminal
 os.system(unzip)
 #aligning the refrence genome
@@ -112,23 +114,24 @@ print(longest)
 #saving it to a new file to run blast with
 with open('problem5_contig_file.fasta', 'w') as handle:
     SeqIO.write(longest, handle, "fasta")
-'''
+
 #downloading data base for betaherpsvirinae
-subfamily = 'datasets download virus genome taxon Betaherpesvirinae --refseq --include genome'
+subfamily = 'datasets download virus genome taxon Betaherpesvirinae --include genome'
 os.system(subfamily)
 os.system(unzip)
 #making my own copy and renaming it
 move = 'mv ncbi_dataset/data/genomic.fna Betaherpesbirinae.fna'
-#unzipping
-os.system(unzip)
-#downloading refrence genome
-ref = 'datasets download virus genome accession NC_006273.2'
-os.system(ref)
-os.system(unzip)
 #making database
 db = 'makeblastdb -in Betaherpesbirinae.fna -out Betaherpesbirinae -title Betaherpesbirinae -dbtype nucl'
 os.system(db)
 #using blast 
 blast_command = 'blastn -query problem5_contig_file.fasta -db Betaherpesbirinae -out myresults.tsv -outfmt "6 sacc pident length qstart qend sstart send bitscore evalue stitle" -max_target_seqs 10 -max_hsps 1'
 os.system(blast_command)
-'''
+#opening output file and saving results
+with open('myresults.tsv', 'r') as f:
+    lines = f.readlines()
+    f.close()
+with open('PipelineProject.log', 'a') as file:
+    for i in lines:
+        file.write(i)
+    file.close()
