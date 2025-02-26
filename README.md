@@ -12,4 +12,5 @@ COMP 383 COMP BIO PYTHON PIPELINE PROJECT
 4. Running the Python Wrapper
 - To run the wrapper first you will want to make a clone of 'myrepo' though "git clone https://github.com/BDal783/myrepo.git".
 - After cloning the repo, you will want to make sure to cd into it and run the file 'PipelineProject_Brendon_Dal.py' without changing to your dedicated terminal. (one way if on visual studio is to run it by using the drop down next to the play button and clicking run python file)
-- The output should add on to the PipelineProject.log file (if opened before running the py file make sure to refresh it)
+- During the last few lines of the code you will download a secound dataset to use as a database and will be asked if you want to override the files in ncbi_datset, select yes for all.
+- The output should add on to the PipelineProject.log file (if opened before running the py file make sure to refresh it).
