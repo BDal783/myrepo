@@ -3,6 +3,7 @@ Donor 1 (6dpi) had 2004530 read pairs before Bowtie2 filtering and 2868934 read 
 spades.py -k 99 -t 1 --isolate -1 mapped_2dpi.1.fastq -2 mapped_2dpi.2.fastq -1 mapped_6dpi.1.fastq -2 mapped_6dpi.2.fastq -o HCMV_combined_assembly
 There are 57 contigs > 1000bp in the assmbly.
 There are 82235 bp in the assembly.
+sacc	pident	length	qstart	qend	sstart	send	bitscore	evalue	stitle
 EF999921.1	100.000	3143	1	3143	135705	132563	5805	0.0	EF999921.1 Human herpesvirus 5 strain TB40/E clone TB40-BAC4, complete sequence
 KF297339.1	100.000	3143	1	3143	103664	100522	5805	0.0	KF297339.1 Human herpesvirus 5 strain TB40/E clone Lisa, complete genome
 KR534201.1	100.000	3143	1	3143	102864	99722	5805	0.0	KR534201.1 Human herpesvirus 5 strain JER2002, complete genome
