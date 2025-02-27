@@ -132,6 +132,7 @@ with open('myresults.tsv', 'r') as f:
     f.close()
 #writing to log file
 with open('PipelineProject.log', 'a') as file:
+    file.write('sacc\tpident\tlength\tqstart\tqend\tsstart\tsend\tbitscore\tevalue\tstitle\n')
     for i in lines:
         file.write(i)
     file.close()
